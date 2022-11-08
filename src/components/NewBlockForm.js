@@ -2,17 +2,14 @@
 import { useEffect, useState } from "react";
 import { Button, Card, Col, Form, Row } from "react-bootstrap";
 import axios from 'axios';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 function NewBlockForm(props) {
 
     const [sender, setSender] = useState()
     const [receiver, setReceiver] = useState()
     const [amount, setAmount] = useState()
-
-    useEffect(() => {
-
-
-    }, [])
 
     const saveTransaction = async (event) => {
         event.preventDefault();
@@ -25,9 +22,30 @@ function NewBlockForm(props) {
         axios
             .post("http://localhost:8080/blocks/transaction", data)
             .then((response) => {
-                if (response.status === '200') {
-                    console.log("Transacción registrada")
+                if (response.status !== 200) {
+                    toast.error('No se pudo añadir el bloque.', {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                    })
+                    return
                 }
+                toast.success('Bloque añadido correctamente.', {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                })
+                console.log("Transacción registrada");
             })
             .catch((error) => console.log(error.message));
     }
@@ -37,7 +55,7 @@ function NewBlockForm(props) {
             <Row className="d-flex flex-column text-center gx-0 justify-content-center align-items-center">
                 <Col xs={6} className="p-2">
                     <Card className="shadow">
-                    <Card.Header><h4>Agregar Bloque</h4></Card.Header>
+                        <Card.Header><h4>Agregar Bloque</h4></Card.Header>
                         <Card.Body>
                             <Form>
                                 <Form.Group className="mb-3" controlId="formSender">
@@ -63,6 +81,7 @@ function NewBlockForm(props) {
                     </Card>
 
                 </Col>
+                <ToastContainer />
             </Row>
 
         </>
