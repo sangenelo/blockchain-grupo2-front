@@ -1,0 +1,7 @@
+.form-label{
+    display: flex !important;
+}
+
+.container{
+    justify-content: center !important;
+}
