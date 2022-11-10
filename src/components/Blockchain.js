@@ -85,7 +85,7 @@ function Blockchain(props) {
                         <Row className="d-flex justify-content-start">
                             {
                                 blocks.map((block, index) =>
-                                    <Col xs={3} key={index} className="mt-2"><Block data={block.data} hash={block.hash} prevHash={block.prevHash} timeStamp={block.timeStamp} index={index} /></Col>
+                                    <Col xs={3} key={index} className="mt-2"><Block data={block.data} hash={block.hash} previousHash={block.previousHash} timeStamp={block.timeStamp} index={index} /></Col>
                                 )
                             }
                         </Row>

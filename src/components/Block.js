@@ -16,13 +16,20 @@ function Block(props) {
                 <Card.Img variant="top" src={blockchain} />
                 <Card.Body>
                     <Card.Title>Bloque {props.index}</Card.Title>
-                    <Card.Text>
                         <Row>
-                            <Col>Origen: {props.data.sender}</Col>
-                            <Col>Destino: {props.data.receiver}</Col>
-                            <Col>Monto: {props.data.amount}</Col>
+                            {props.data !== null ?
+                                <>
+                                    <Col>DNI: {props.data.dniAlumno}</Col>
+                                    <Col>Materia: {props.data.materia}</Col>
+                                    <Col>Nota: {props.data.nota}</Col>
+                                </> :
+                                <>
+                                    <Col>
+                                        <p>Genesis Block</p>
+                                    </Col>
+                                </>}
+
                         </Row>
-                    </Card.Text>
                 </Card.Body>
                 <ListGroup className="list-group-flush">
                     <ListGroup.Item><small>Hash: {props.hash}</small></ListGroup.Item>
@@ -30,7 +37,7 @@ function Block(props) {
                 </ListGroup>
 
                 <Card.Footer>
-                    <small className="text-muted">Hash bloque anterior: {props.prevHash}</small>
+                    <small className="text-muted">Hash bloque anterior: {props.previousHash}</small>
                 </Card.Footer>
             </Card>
         </>

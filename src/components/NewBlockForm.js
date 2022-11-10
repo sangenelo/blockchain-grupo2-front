@@ -7,17 +7,17 @@ import { ToastContainer, toast } from 'react-toastify';
 
 function NewBlockForm(props) {
 
-    const [sender, setSender] = useState()
-    const [receiver, setReceiver] = useState()
-    const [amount, setAmount] = useState()
+    const [dniAlumno, setDniAlumno] = useState()
+    const [materia, setMateria] = useState()
+    const [nota, setNota] = useState()
 
     const saveTransaction = async (event) => {
         event.preventDefault();
-        console.log("Sender: " + sender + " Receiver: " + receiver + " Monto: " + amount)
+        console.log("DNI: " + dniAlumno  + " Materia: " + materia + " Nota: " + nota)
         const data = {
-            sender: sender,
-            receiver: receiver,
-            amount: amount
+            dniAlumno: dniAlumno,
+            materia: materia,
+            nota: nota
         }
         axios
             .post("http://localhost:8080/blocks/transaction", data)
@@ -58,19 +58,19 @@ function NewBlockForm(props) {
                         <Card.Header><h4>Agregar Bloque</h4></Card.Header>
                         <Card.Body>
                             <Form>
-                                <Form.Group className="mb-3" controlId="formSender">
-                                    <Form.Label>Origen</Form.Label>
-                                    <Form.Control type="text" placeholder="Ingrese nombre de quien envía" onChange={(e) => setSender(e.target.value)} />
+                                <Form.Group className="mb-3" controlId="formDNI">
+                                    <Form.Label>DNI Alumno</Form.Label>
+                                    <Form.Control type="number" placeholder="Ingrese el DNI del alumno" onChange={(e) => setDniAlumno(e.target.value)} />
                                 </Form.Group>
 
-                                <Form.Group className="mb-3" controlId="formReceiver">
-                                    <Form.Label>Destinatario</Form.Label>
-                                    <Form.Control type="text" placeholder="Ingrese nombre de quien recibe" onChange={(e) => setReceiver(e.target.value)} />
+                                <Form.Group className="mb-3" controlId="fromMateria">
+                                    <Form.Label>Materia</Form.Label>
+                                    <Form.Control type="text" placeholder="Ingrese nombre de la materia" onChange={(e) => setMateria(e.target.value)} />
                                 </Form.Group>
 
-                                <Form.Group className="mb-3" controlId="formAmount">
-                                    <Form.Label>Monto</Form.Label>
-                                    <Form.Control type="number" placeholder="Ingrese el monto" onChange={(e) => setAmount(e.target.value)} />
+                                <Form.Group className="mb-3" controlId="formNota">
+                                    <Form.Label>Nota</Form.Label>
+                                    <Form.Control type="number" placeholder="Ingrese la nota" onChange={(e) => setNota(e.target.value)} />
                                 </Form.Group>
 
                                 <Button variant="primary" type="submit" onClick={(e) => saveTransaction(e)}>
