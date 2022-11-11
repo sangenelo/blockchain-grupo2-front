@@ -52,10 +52,10 @@ function NewBlockForm(props) {
 
     return (
         <>
-            <Row className="d-flex flex-column text-center gx-0 justify-content-center align-items-center">
-                <Col xs={6} className="p-2">
+            <Row className="d-flex text-center gx-0 justify-content-around align-items-center">
+                <Col xs={5} className="p-2">
                     <Card className="shadow">
-                        <Card.Header><h4>Agregar Bloque</h4></Card.Header>
+                        <Card.Header><h4>Agregar Registro</h4></Card.Header>
                         <Card.Body>
                             <Form>
                                 <Form.Group className="mb-3" controlId="formDNI">
@@ -74,12 +74,19 @@ function NewBlockForm(props) {
                                 </Form.Group>
 
                                 <Button variant="primary" type="submit" onClick={(e) => saveTransaction(e)}>
-                                    Registrar
+                                    Agregar
                                 </Button>
                             </Form>
                         </Card.Body>
                     </Card>
 
+                </Col>
+                <Col xs={5}>
+                <Card className="shadow">
+                        <Card.Header><h4>Bloque</h4></Card.Header>
+                        <Card.Body>
+                        </Card.Body>
+                    </Card>
                 </Col>
                 <ToastContainer />
             </Row>

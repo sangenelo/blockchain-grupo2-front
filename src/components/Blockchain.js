@@ -82,7 +82,7 @@ function Blockchain(props) {
                             <Button variant="outline-danger" size="sm" className="m-1" onClick={() => deleteBlockchain()}>Eliminar</Button>
                             </Col>
                         </Row>
-                        <Row className="d-flex justify-content-start">
+                        <Row className="d-flex justify-content-around">
                             {
                                 blocks.map((block, index) =>
                                     <Col xs={3} key={index} className="mt-2"><Block data={block.data} hash={block.hash} previousHash={block.previousHash} timeStamp={block.timeStamp} index={index} /></Col>

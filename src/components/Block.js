@@ -12,24 +12,32 @@ function Block(props) {
 
     return (
         <>
-            <Card style={{ width: '18rem' }} className="shadow">
+            <Card className="shadow">
                 <Card.Img variant="top" src={blockchain} />
                 <Card.Body>
                     <Card.Title>Bloque {props.index}</Card.Title>
-                        <Row>
-                            {props.data !== null ?
-                                <>
-                                    <Col>DNI: {props.data.dniAlumno}</Col>
-                                    <Col>Materia: {props.data.materia}</Col>
-                                    <Col>Nota: {props.data.nota}</Col>
-                                </> :
-                                <>
-                                    <Col>
-                                        <p>Genesis Block</p>
-                                    </Col>
-                                </>}
+                    <Row>
+                        {props.data !== null ?
+                            <>
+                                <Col>
+                                    {
+                                        props.data.map((record, index) =>
+                                            <ListGroup horizontal key={index} className="mt-2">
+                                                <ListGroup.Item className="flex-fill"><small><strong>DNI:</strong> {record.dniAlumno}</small></ListGroup.Item>
+                                                <ListGroup.Item className="flex-fill"><small><strong>Materia:</strong> {record.materia}</small></ListGroup.Item>
+                                                <ListGroup.Item className="flex-fill"><small><strong>Nota:</strong> {record.nota}</small></ListGroup.Item>
+                                            </ListGroup>
+                                        )
+                                    }
+                                </Col>
+                            </> :
+                            <>
+                                <Col>
+                                    <p>Genesis Block</p>
+                                </Col>
+                            </>}
 
-                        </Row>
+                    </Row>
                 </Card.Body>
                 <ListGroup className="list-group-flush">
                     <ListGroup.Item><small>Hash: {props.hash}</small></ListGroup.Item>
