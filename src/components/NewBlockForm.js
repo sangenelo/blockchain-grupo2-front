@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from "react";
-import { Button, Card, Col, Form, ListGroup, Row } from "react-bootstrap";
+import { Button, Card, CloseButton, Col, Form, ListGroup, Row } from "react-bootstrap";
 import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
@@ -21,6 +21,13 @@ function NewBlockForm(props) {
             nota: nota
         }
         setBlock(current => [...current, record]);
+    }
+
+    const deleteRecord = async (index) => {
+        console.log("Delete record: "+index)
+        setBlock(oldArray => {
+            return oldArray.filter((value, i) => i !== index)
+          })
     }
 
     const saveTransaction = async (event) => {
@@ -95,13 +102,18 @@ function NewBlockForm(props) {
                         <Card.Body>
                             {
                                 block.map((lineItem, index) =>
-
-
-                                    <ListGroup horizontal key={index} className="mt-2">
+                                <Row className="d-flex align-items-center mt-2" key={index}>
+                                    <Col xs={11}>
+                                    <ListGroup horizontal >
                                         <ListGroup.Item className="flex-fill"><strong>DNI:</strong> {lineItem.dniAlumno}</ListGroup.Item>
                                         <ListGroup.Item className="flex-fill"><strong>Materia:</strong> {lineItem.materia}</ListGroup.Item>
                                         <ListGroup.Item className="flex-fill"><strong>Nota:</strong> {lineItem.nota}</ListGroup.Item>
                                     </ListGroup>
+                                    </Col>
+                                    <Col xs={1}>
+                                        <Button variant="danger"  onClick={(e) => deleteRecord(index)}>X</Button>
+                                    </Col>
+                                </Row>
                                 )
                             }
                             <Button variant="primary" type="submit" onClick={(e) => saveTransaction(e)} className="mt-3">
