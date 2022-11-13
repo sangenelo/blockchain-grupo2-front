@@ -76,7 +76,7 @@ function MerckleBlockchain(props) {
             <Row className="gx-0 mt-4 d-flex justify-content-center">
                 <Col xs={10}>
                 <Card>
-                    <Card.Header><h4>Blockchain </h4></Card.Header>
+                    <Card.Header><h4>Merckle Blockchain </h4></Card.Header>
                     <Card.Body>
                         <Row>
                             <Col>
@@ -87,7 +87,7 @@ function MerckleBlockchain(props) {
                         <Row className="d-flex justify-content-around">
                             {
                                 blocks.map((block, index) =>
-                                    <Col xs={3} key={index} className="mt-2"><MerckleBlock data={block.data} hash={block.hash} previousHash={block.previousHash} timeStamp={block.timeStamp} index={index} /></Col>
+                                    <Col xs={3} key={index} className="mt-2"><MerckleBlock data={block.merkleTree} hash={block.hash} previousHash={block.previousHash} timeStamp={block.timeStamp} index={index} /></Col>
                                 )
                             }
                         </Row>
