@@ -18,7 +18,7 @@ function App() {
     setShowLinear(!showLinear)
     setShowMerckle(!showMerckle)
     if(actualMode==="Lineal"){
-      setActualMode("Merckle")
+      setActualMode("Merkle")
     }else{
       setActualMode("Lineal")
     }
@@ -45,7 +45,7 @@ function App() {
           <h4>Modo: {actualMode}</h4>
         </Col>
         <Col className='d-flex justify-content-start p-1'>
-          <Button variant="dark" onClick={() => switchMode()}>Cambiar a {actualMode === "Lineal" ? "Merckle" : "Lineal"}</Button>
+          <Button variant="dark" onClick={() => switchMode()}>Cambiar a {actualMode === "Lineal" ? "Merkle" : "Lineal"}</Button>
         </Col>
       </Row>
       

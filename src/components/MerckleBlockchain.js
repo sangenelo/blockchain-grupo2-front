@@ -76,7 +76,7 @@ function MerckleBlockchain(props) {
             <Row className="gx-0 mt-4 d-flex justify-content-center">
                 <Col xs={10}>
                 <Card>
-                    <Card.Header><h4>Merckle Blockchain </h4></Card.Header>
+                    <Card.Header><h4>Merkle Blockchain </h4></Card.Header>
                     <Card.Body>
                         <Row>
                             <Col>
