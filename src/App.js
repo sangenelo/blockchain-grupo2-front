@@ -1,10 +1,22 @@
-import { Container, Navbar } from 'react-bootstrap';
+import { useState } from 'react';
+import { Button, Container, Navbar } from 'react-bootstrap';
 import './App.css';
 import Blockchain from './components/Blockchain';
+import MerckleBlock from './components/MerckleBlock';
+import MerckleBlockchain from './components/MerckleBlockchain';
 import NewBlockForm from './components/NewBlockForm';
 import icon from './img/icon.png';
 
 function App() {
+
+  const [showLinear, setShowLinear] = useState(true)
+  const [showMerckle, setShowMerckle] = useState(false)
+
+
+  const switchMode = () => {
+    setShowLinear(!showLinear)
+    setShowMerckle(!showMerckle)
+  }
 
   return (
     <div className="App">
@@ -22,8 +34,15 @@ function App() {
           </Navbar.Brand>
         </Container>
       </Navbar>
-      <NewBlockForm />
-      <Blockchain />
+      <Button onClick={() => switchMode()}>Lineal/Merckle</Button>
+      <div className={showLinear ? '' : 'invisible'}>
+        <NewBlockForm />
+        <Blockchain />
+      </div>
+      <div className={showMerckle ? '' : 'invisible'}>
+        <NewBlockForm />
+        <MerckleBlockchain />
+      </div>
     </div>
   );
 }

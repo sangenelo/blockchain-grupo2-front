@@ -5,3 +5,7 @@
 .container{
     justify-content: center !important;
 }
+
+.invisible{
+    display: none;
+}
