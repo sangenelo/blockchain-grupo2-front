@@ -62,7 +62,21 @@ function NewMerckleBlockForm(props) {
                 setBlock([])
                 console.log("Transacción registrada");
             })
-            .catch((error) => console.log(error.message));
+            .catch((error) => {
+                console.log(error.message);
+                if(error.response.status===500){
+                    toast.error('⚠️ La blockchain fue corrompida, no se pueden añadir nuevos bloques. Deberás reiniciarla.', {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                    })
+                }
+            }); 
     }
 
     return (

@@ -15,17 +15,17 @@ function MerckleModal(props) {
     const print = (data) => {
         if (typeof (data) !== 'undefined') {
             //console.log(data.hash);
-            html.push(<ListGroup.Item><strong>Hash nodo: </strong><small>{data.hash}</small></ListGroup.Item>)
+            html.push(<ListGroup.Item key={Math.random()}><strong>Hash nodo: </strong><small>{data.hash}</small></ListGroup.Item>)
             print(data.firstNode);
             print(data.secondNode);
             if (typeof (data.data) !== 'undefined') {
                 //console.log(data.data)
                 html.push(
-                <ListGroup.Item><strong>Contenido: </strong>
+                <ListGroup.Item key={Math.random()}><strong>Contenido: </strong>
                     <ListGroup horizontal className="mt-2">
-                        <ListGroup.Item className="flex-fill"><small><strong>DNI:</strong> {data.data.dniAlumno}</small></ListGroup.Item>
-                        <ListGroup.Item className="flex-fill"><small><strong>Materia:</strong> {data.data.materia}</small></ListGroup.Item>
-                        <ListGroup.Item className="flex-fill"><small><strong>Nota:</strong> {data.data.nota}</small></ListGroup.Item>
+                        <ListGroup.Item key={Math.random()} className="flex-fill"><small><strong>DNI:</strong> {data.data.dniAlumno}</small></ListGroup.Item>
+                        <ListGroup.Item key={Math.random()} className="flex-fill"><small><strong>Materia:</strong> {data.data.materia}</small></ListGroup.Item>
+                        <ListGroup.Item key={Math.random()} className="flex-fill"><small><strong>Nota:</strong> {data.data.nota}</small></ListGroup.Item>
                         </ListGroup>
                     </ListGroup.Item>
                 )

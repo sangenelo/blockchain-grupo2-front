@@ -20,11 +20,24 @@ function Blockchain(props) {
         await axios
         .get("http://localhost:8080/blocks/")
         .then((response) => {
-            //console.log(response.data)
             setBlocks(response.data)
             setLoading(false);
         })
-        .catch((error) => console.log(error.message)); 
+        .catch((error) => {
+            console.log(error.message);
+            if(error.response.status===500){
+                toast.error('⚠️ La blockchain fue corrompida.', {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                })
+            }
+        }); 
     }, [axios])
 
     const deleteBlockchain = () => {
